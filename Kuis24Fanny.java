@@ -7,12 +7,21 @@ public class Kuis24Fanny {
         int jumlahKendaraan = 0;
         int terlama = 0;
         int lebihDari3Jam = 0;
+        int nim2 = <2 digit NIM>; 
+        int batas = (nim2 % 3) + 2;
+        int salahBerturut = 0;
         System.out.print("Lama parkir (jam, 0 = selesai): ");
         jam = sc.nextInt();
         while (jam != 0) {
             if (jam < 1 || jam > 24) {
                 System.out.println("Input tidak valid");
+                salahBerturut++;
+                if (salahBerturut == batas) {
+                    System.out.println("Program dihentikan : " + batas + " kali salah input berturut turut");
+                    break;
+                }
             } else {
+                salahBerturut = 0;
                 int biaya = 5000 + (jam - 1) * 3000;
                 total += biaya;
                 jumlahKendaraan++;
